@@ -1,0 +1,61 @@
+\documentclass[12pt]{book}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+
+ 
+\newtheorem{theorem}{Theorem}
+ 
+\begin{document}
+\subsubsection*{The Lorentz Condition:}
+
+	\begin{equation}
+	\frac{1}{c}\frac{\partial \phi}{\partial t}+\textrm{div}(A)=0.
+	\end{equation}
+
+
+	\noindent As we shall see, by using what are known as gauge transformations, we can always select potentials for the electromagnetic field that satisfy this condition. The nice part about havint the potentials satisfy the Lorentz condition is that the PDEs (9.51)-(9.52) decouple into a pair of wave equations:
+
+	\begin{eqnarray*}
+	\frac{\partial \phi}{\partial t^2}-c^2 \nabla^2 \phi & = & 4\pi c^2 \rho, \\
+	\frac{\partial^2 A}{\partial t^2} - c^2\nabla^2 A & = & 4\pi c J.
+	\end{eqnarray*}
+
+
+\begin{theorem} (Lorentz Potential Equations) On a simply connected spatial region, the vector firleds E, B are a solution of Mazwell's equations if and only if
+
+
+\begin{eqnarray}
+		E & = & - \nabla \phi - \frac{1}{c}\frac{\partial A}{\partial t}, \\
+		B & = & \textup{curl}(A),
+\end{eqnarray}
+
+	\noindent for some scalar field $\phi$ and vector field A that satisfy the Lorentz potential equations
+
+	\begin{eqnarray}
+		\frac{1}{c}\frac{\partial \phi}{\partial t} & + & \textup{div}(A) = 0, \\
+		\frac{\partial^2 \phi}{\partial t^2} & - & c^2 \nabla^2 \phi = 4\pi c^2 \rho \\
+		\frac{\partial A}{\partial t^2} & - & c^2 \nabla^2 A = 4\pi c J.
+	\end{eqnarray}
+
+\end{theorem}
+
+
+
+\noindent \textbf{Proof} \indent Suppose first that E, B is a solution of Maxwell's equations. We repeat some of the above arguments because we have to change the notation slightly. You will see why shortly. Thus, since div($\emph{B}$)=0, there exists a vector field $(A_0)=\emph{B}$. Substituding this expression for $B$ into Faraday's law gives $\textrm{curl}(\partial A_0 / \partial t + E) = 0$. Thus there exists a scalar field $\phi_0$ such that $\nabla \phi_0 = \partial A_0 / \partial t + E$. Rearranging this gives $E = - \nabla \phi_0 - \partial A_0 / \partial t$. Thus \emph{E} and \emph{B} are given by potentials $\phi_0$ and $A_0$ in the form of equations (9.54)-(9.55).
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
