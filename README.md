@@ -1,4 +1,5 @@
 # math300_estes
-My repository for WSUV's MATH300 course.
+NAME: ZEKE T. ESTES 
+NID: 11485729
 
-Making the second README commit message.
+CONTAINS ASSIGNMENTS FOR MATH300
