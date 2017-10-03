@@ -1,0 +1,38 @@
+Assignment 4:
+
+Turn the following assignment in as a LaTeX document added to the repository we created in assignment three.  Create a folder called “assn4”, and place your LaTeX document with your answers there.  
+
+
+
+
+
+Problem 1 [binary integers].
+	Write the following unsigned numbers in binary and hexadecimal using 8 bits (8 binary digits).
+	[Hint: start by writing each integer as a sum of powers of two]
+		a. 16
+		b. 170
+		c. 197
+		d. 255
+
+Problem 2 [fixed point].
+	You are tasked with determining how many bits are necessary to store some unsigned fixed point numbers. 
+
+	The constraints you are given are as follows:
+		* The whole portion of the numbers (the part to the left of the decimal point) must be able to store a maximum value of 511.
+
+		* The fractional portion of the numbers (the part to the right of the decimal point) must have a precision of 1/128.  In other words, the fractional part must be able to represent any number x/128 where x ranges from 0 to 127.
+
+		* How many bits are required for a fixed point number that meets these constraints?  Explain your reasoning.
+
+Problem 3 [fixed point].
+	Say you are handed two fixed point numbers A and B, where each of them contain N binary digits for the whole portion and M digits for the fractional portion. 
+
+	* How does multiplication affect the number of bits that are required in the result if we multiply A and B if we do not want to lose any information?
+
+	If you are stuck and don’t know where to begin, work through some examples: let N=2 and M=1, or N=3, M=2.  
+
+Problem 4 [networking concepts].
+	Say Alice and Bob are conducting online financial transactions on the web, and wish to protect their credit card information from malicious parties on the internet.
+		a. What protocols will be involved in a secure web transaction?  [Hint: there are at least two]. Explain briefly the role that each protocol that you list plays in their transaction.
+		
+		b. What piece of information do both Alice and Bob keep secret to ensure that nobody can decode the messages they are sending back and forth?  What happens if this secret leaks out?
