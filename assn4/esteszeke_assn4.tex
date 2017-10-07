@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+
+\title{MATH 300 Assignment 4}
+\author{Zeke T. Estes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1 [Binary Integers]}
+Write the following unsigned numbers in binary and hexadecimal using 8 bits (8 binary digits).
+
+\begin{align*}
+	\begin{array}{ | l | l | l | l | l | l | l | l | l | l | }
+	\hline
+	\textbf{Problem} & $$7_{(2^7)}$$ & $$6_{(2^6)}$$ & $$5_{(2^5)}$$ & $$4_{(2^4)}$$ & $$3_{(2^3)}$$ & $$2_{(2^2)}$$ & $$1_{(2^1)}$$ & $$0_{(2^0)}$$ & \textup{Hex} \\ \hline
+	\textup{a. 16}  & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & \textup{0x10} \\ \hline
+	\textup{b. 170} & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & \textup{0xAA} \\ \hline
+	\textup{c. 197} & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & \textup{0xC5} \\ \hline
+	\textup{d. 255} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & \textup{0xFF} \\ \hline
+	\end{array}
+\end{align*}
+
+\subsection*{Problem 2 [Fixed Point]}
+You are taxed with determining how many bits are necessary to store some unsigned fixed point numbers. The constraints you are given are as follows:
+\begin{itemize}
+	\item \textbf{The whole portion of the numbers (the part to the left of the decimal point) must be able to store a maximum value of 511.}
+		\begin{itemize}
+			\item $\frac{ln(511)}{ln(2)}\approx 9$
+		$\therefore$ 9 bits required
+		\end{itemize}
+	\item \textbf{The fractional portion of the numbers (the part to the right of the decimal point) must have a precision of $\frac{1}{128}$. In other words, the fractional part must be able to represent any number $\frac{x}{128}$ where x ranges from 0 to 127.}
+		\begin{itemize}
+			\item To determine the bits required to acomplish precision of 1/128, a representation of 1/128 in binary must be found.
+			\begin{align*}
+				\begin{array}{ | l l | l |} \hline
+					x = \frac{1}{128} & 0.0078125 & \\ \hline
+					x = x * 2 & 0.015625 & 0 \\
+					x = x * 2 & 0.03125 & 0 \\
+					x = x * 2 & 0.0625 & 0 \\
+					x = x * 2 & 0.125 & 0 \\
+					x = x * 2 & 0.25 & 0 \\
+					x = x * 2 & 0.5 & 0 \\
+					x = x * 2 & 1 & 1 \\ \hline 
+					& bits & \textup{7} \\ \hline
+				\end{array}
+			\end{align*}
+		\end{itemize}
+	\item \textbf{How many bits are required for a fixed point number that meets these constraints? Explain your reasoning.}
+		\begin{itemize}
+			\item In order to represent an unsigned fixed point number $\leq$511, a binary number with 9 bits must be used, as 0b11111111111 == 0d511. In order to represent an unsigned fixed point number at a precision of $\frac{1}{128}$, then a binary number with 7 bits must be used, as shown above. Therefore, it requires 16 bits to a fixed point number with the supplied specifications.
+		\end{itemize}
+\end{itemize}
+
+\subsection*{Problem 3 [fixed point]}
+Say you are handed two fixed point numbers A and B, where each of them contain N binary digits for the whole portion and M digits for the fractional portion. 
+
+\begin{itemize}
+	\item \textbf{How does multiplication affect the number of bits that are required in the result if we multiply A and B if we do not want to lose any information? (If you are stuck and don't know where to begin, work through some examples: let N=2 and M=1, or N=3 and M=2).}
+		\begin{itemize}
+			\item If the affects of overflow are ignored, and two fixed point numbers A and B are multiplied, it's important to analyze the extreme cases. Ignoring the fractional portion, if two numbers A and B are multiplied, at their max bit values, this would cause the number of bits to \textbf{double}, as shown below. 
+
+			\begin{align*}
+				\begin{array}{ | l | l | l | } \hline
+					A_{N_{max}} * B_{N_{max}} & Result & bits \\
+					11*11 & 1001 & 4 \\
+					111*111 & 110001 & 6 \\
+					1111*1111 & 11100001 & 8 \\
+					11111*11111 & 1111000001 & 10 \\
+					111111*111111 & 111110000001 & 12 \\
+					1111111*1111111 & 11111100000001 & 14 \\ \hline
+				\end{array}
+			\end{align*}
+
+			\item Analyzing the fractional portion of the fixed point numbers is less tangible, as the matter of precision must be defined by the user. when the components of $A_M$ and $B_M$ are multiplied, the number of digits present should satisfy the level of precision necessary. 
+			\item Knowing this information, it is safe to assume that, although unoptimized, if one wants to ensure that no information is lost, doubling the number of digits, then pruning the leading zeros, would ensure that no information is lost. 
+		\end{itemize}
+\end{itemize}
+
+\subsection*{Problem 4}
+Say Alice and Bob are conducting online financial translations on the web, and wish to protect their credit card information from malicious parties on the Internet. 
+
+\begin{itemize}
+	\item \textbf{What protocols will be involved in a secure web transaction? [Hint: there are at least two]. Explain briefly the role that each protocol that you list plays in their transaction.}
+		\begin{itemize}
+			\item HTTPS and SSL could both be used. HTTPS ensures that the web page a client is accessing is secure and encrypted. SSL also ensures that the data sent over the connection between the web server and client is secure and encrypted, and is responsible for generating the public and private encryption key between these two devices.
+		\end{itemize}
+	\item \textbf{What piece of information do both Alice and Bob keep secret to ensure that nobody can decode the messages they are sending back and forth? What happens if this secret leaks out?}
+		\begin{itemize}
+			\item Alice and Bob must keep their private key \emph{private}, while using public keys to ensure that information sent from said person is actually from the other. If this secret private key is leaked out, then a trained individual could use said key to decrypt encrypted messages sent either over the internet, or even locally. 
+		\end{itemize}
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
